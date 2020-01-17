@@ -1,0 +1,38 @@
+easy_admin:
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
+    entities:
+        Tutoriels:
+            class: App\Entity\Tutorial
+            list:
+                fields: ['id', 'Title', 'PublishAt', 'isPublish','order_menu']
+            form:
+                fields: ['Title', {property: 'content' , type: 'fos_ckeditor' },{property: 'OrderMenu' , type: 'number' }, 'VideoLink', 'isPublish', 'PublishAt','category']
+        User:
+            class: App\Entity\User
+            password_encoding: { algorithm: 'bcrypt'}
+            list:
+                fields: ['id', 'Username', 'Inscription', {property: 'Active' , type: 'boolean' }]
+            edit:
+                fields:
+                    - email
+                    - { property: 'Active' , type: 'checkbox' }
+                    - Inscription
+                    - { property: 'plainPass' , type: 'text' , label: "Nouveau mot de passe"}
+
+        Catégories:
+            class: App\Entity\Category
+            list:
+                fields: ['id', 'name']
+            form:
+                fields: ['name']
+    site_name: 
+        'Administration Tutoriels Resonance'
+    user:
+        display_name: false
+        display_avatar: false
+    design:
+        brand_color: '#FF8E00'
+

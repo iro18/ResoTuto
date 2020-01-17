@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tutoriels Vidéos Résonance{% endblock %}
+
+{% block body %}
+
+
+<div class="content-body remarged-body-h body-tuto">
+	<a class="retourbtn" href='javascript:history.back()'><img src='{{ asset('images/left-arrow-key.png') }}' /></a>
+    <h1>{{ tutorial.title }}</h1>
+    <p class="date-publication">Publié le {{ tutorial.PublishAt|date('d-m-y') }}</p>
+    <div class="single-tutoriel">
+      <p>{{ tutorial.content|raw }}</p>
+
+      {{ tutorial.VideoLink|iframetuto|raw  }}
+    </div>
+    <div class="nextprevtuto">
+    	{% if PrevTutorial is defined and PrevTutorial is not null %}
+	    	<div class="prevtuto">
+	    		<p>Précédent tutoriel : <a href='{{ path("show_tutoriel", {"slug": PrevTutorial.slug}) }}'>{{ PrevTutorial.title }}</a>
+	    		</p>
+	    	</div>
+    	{% endif %}
+
+    	{% if NextTutorial is defined and NextTutorial is not null %}
+    	<div class="nexttuto">
+    		<p>Prochain tutoriel : <a href='{{ path("show_tutoriel", {"slug": NextTutorial.slug}) }}'>{{ NextTutorial.title }}</a>
+    		</p>
+		</div>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

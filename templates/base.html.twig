@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel='shortcut icon' href='{{ asset('images/favicon.jpg')}}'/>
+    	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+        <meta charset="UTF-8">
+        <meta name="robots" content="noindex">
+        <title>{% block title %}Bienvneue !{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% endblock %}
+    </head>
+    <header>
+    	<div class="logo-header">
+    		<a href="{{ path('home') }}">
+    			<img title="Logo Résonance Communication" src='{{ asset('images/logo-resonance-2018.png') }}' / >
+            </a>
+    	</div>
+    </header>
+    <body>
+    {% if app.user %}
+        <a class="deconnexion" href="{{ path('app_logout') }}"><img src="{{ asset('images/logout.png')}}" /></a>
+    {% endif %}
+        {% block body %}{% endblock %}
+    <div class="disclaimer"> 
+        <p>Ces vidéos tutoriels sont à destination des clients de Résonance Communication, il n'est pas autorisé de les partager ou de les diffuser publiquement</p>
+    </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+    <footer>
+    	<div class='footer-wrap'>
+    		<p>&copy; 2019 - Création <a target="_blank" href='http://www.resonancecommunication.com'>Résonance Communication</a><p>
+    	</div>
+    </footer>
+</html>
