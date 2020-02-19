@@ -1,7 +1,7 @@
 # Reso Tuto, Simple Videos Tutorials Website
 
-This project was created to learn Symfony4 and try to integrate some ReactJs in the future. 
-Main Goal for this website is to provide some videos tutorials on Wordpress to our clients.
+This project was created to learn Symfony4/5 and try to integrate some ReactJs in the future. 
+Main Goal for this website is to provide some videos tutorials on Wordpress to our clients and improve my skills on Symfony.
 
 Actually Fonctionnal : 
 - Possibility to Connect for an admin
@@ -18,6 +18,7 @@ Here is the TODO (Main):
 - Add Password Lost on Login Page
 - Create basics Videos
 - Add Remaining Time Subscription (Look for the best way to do it)
+- Create Unit Test
 
 
 Others features (Secondary)
@@ -26,9 +27,11 @@ Others features (Secondary)
 - ~~Go to Next / Previous Project (View)~~
 - ~~Add Order on Tutorials + OrderBy Query on Home~~
 - ~~Add CkEditor on Content~~
+- Add "Search Tutorial"
 
 Style Todo (Tertiary)
 - Change Icons for : Deconnect / Previous page
 - Add maybe one video on Home for anonymous
+- ~~Add button Administration for admin~~
 - Better explanations on Home 
 - Better design

@@ -9,7 +9,7 @@ easy_admin:
             list:
                 fields: ['id', 'Title', 'PublishAt', 'isPublish','order_menu']
             form:
-                fields: ['Title', {property: 'content' , type: 'fos_ckeditor' },{property: 'OrderMenu' , type: 'number' }, 'VideoLink', 'isPublish', 'PublishAt','category']
+                fields: ['Title', {property: 'content' , type: 'FOS\CKEditorBundle\Form\Type\CKEditorType' },{property: 'OrderMenu' , type: 'number' }, 'VideoLink', 'isPublish', 'PublishAt','category']
         User:
             class: App\Entity\User
             password_encoding: { algorithm: 'bcrypt'}
@@ -35,4 +35,7 @@ easy_admin:
         display_avatar: false
     design:
         brand_color: '#FF8E00'
+        form_theme: # Both themes are for ckeditor integration 
+            - "@EasyAdmin/form/bootstrap_4.html.twig" 
+            - "@FOSCKEditor/Form/ckeditor_widget.html.twig"
 

@@ -10,7 +10,7 @@ class AppExtension extends AbstractExtension
     public function getFilters()
     {
         return [
-            new TwigFilter('iframetuto', [$this, 'IframedTuto']),
+            new TwigFilter('iframetuto', [$this, 'IframedTuto'], ['is_safe' => ['html']]),
         ];
     }
 

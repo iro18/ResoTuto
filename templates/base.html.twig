@@ -8,7 +8,8 @@
         <title>{% block title %}Bienvneue !{% endblock %}</title>
         {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
-		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
         {% endblock %}
     </head>
     <header>
@@ -17,6 +18,13 @@
     			<img title="Logo Résonance Communication" src='{{ asset('images/logo-resonance-2018.png') }}' / >
             </a>
     	</div>
+        {% if is_granted('ROLE_ADMIN') %} 
+            <div class="dashlink">
+                <a href="{{ path('easyadmin') }}"> Administration
+                    <i class="fa fa-tachometer-alt"></i>
+                </a>
+            </div>
+        {% endif %}
     </header>
     <body>
     {% if app.user %}

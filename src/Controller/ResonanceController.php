@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Entity\Tutorial;
 use App\Entity\Category;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+// use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
 use App\Repository\TutorialRepository;
 
@@ -43,7 +43,7 @@ class ResonanceController extends AbstractController
     public function showTutorial($slug, TutorialRepository $TutoRepo)
     {
 
-         $this->denyAccessUnlessGranted('ROLE_USER');
+         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
          
     	$tutorial = $TutoRepo->findOneBySlug($slug);

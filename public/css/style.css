@@ -32,7 +32,17 @@ header{
 .logo-header img{
 	height: 150px
 }
-
+.dashlink a{
+    color: #fff !important;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+.dashlink{
+    position: absolute;
+    top: 15px;
+    right: 5%;
+}
 
 
 /**  BODY  **/

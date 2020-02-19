@@ -12,7 +12,7 @@
     <div class="single-tutoriel">
       <p>{{ tutorial.content|raw }}</p>
 
-      {{ tutorial.VideoLink|iframetuto|raw  }}
+      {{ tutorial.VideoLink|iframetuto  }}
     </div>
     <div class="nextprevtuto">
     	{% if PrevTutorial is defined and PrevTutorial is not null %}
