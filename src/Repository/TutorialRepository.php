@@ -37,23 +37,28 @@ class TutorialRepository extends ServiceEntityRepository
     */
 
     
-    public function findOneNextTuto($value): ?Tutorial
+    public function findOneNextTuto($value,$categ): ?Tutorial
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.order_menu > :val')
+            ->andWhere('t.category = :categ')
             ->setMaxResults(1)
+            ->orderBy('t.order_menu', 'ASC')
             ->setParameter('val', $value)
+            ->setParameter('categ', $categ)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     } 
-       public function findOnePrevTuto($value): ?Tutorial
+       public function findOnePrevTuto($value,$categ): ?Tutorial
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.order_menu < :val')
+            ->andWhere('t.category = :categ')
             ->setMaxResults(1)
             ->orderBy('t.order_menu', 'DESC')
             ->setParameter('val', $value)
+            ->setParameter('categ', $categ)
             ->getQuery()
             ->getOneOrNullResult()
         ;

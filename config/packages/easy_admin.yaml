@@ -7,7 +7,7 @@ easy_admin:
         Tutoriels:
             class: App\Entity\Tutorial
             list:
-                fields: ['id', 'Title', 'PublishAt', 'isPublish','order_menu']
+                fields: ['id', 'Title', 'PublishAt', 'isPublish','order_menu',  { property: 'category.name', label: 'Catégories' }]
             form:
                 fields: ['Title', {property: 'content' , type: 'FOS\CKEditorBundle\Form\Type\CKEditorType' },{property: 'OrderMenu' , type: 'number' }, 'VideoLink', 'isPublish', 'PublishAt','category']
         User:
@@ -20,9 +20,16 @@ easy_admin:
                     - email
                     - { property: 'Active' , type: 'checkbox' }
                     - Inscription
+                    - property: 'roles'
+                      type: 'choice'
+                      type_options:
+                        mapped: true
+                        expanded: true
+                        multiple: true
+                        choices: { 'Utilisateur': 'ROLE_USER', 'Administrateur': 'ROLE_ADMIN' }
                     - { property: 'plainPass' , type: 'text' , label: "Nouveau mot de passe"}
 
-        Catégories:
+        Categories:
             class: App\Entity\Category
             list:
                 fields: ['id', 'name']

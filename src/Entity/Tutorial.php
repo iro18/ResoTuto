@@ -57,8 +57,12 @@ class Tutorial
     /**
      * @ORM\Column(type="integer")
      */
-    private $order_menu;
+    private $order_menu = 1 ;
 
+    public function __toString()
+    {
+        return $this->Title;
+    }
 
     public function getId(): ?int
     {
@@ -159,6 +163,11 @@ class Tutorial
         $this->order_menu = $order_menu;
 
         return $this;
+    }
+
+    public function getCategoryName(): ?string
+    {
+        return $this->getCategory()->getName();
     }
 
 }

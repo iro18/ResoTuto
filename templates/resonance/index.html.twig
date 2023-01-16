@@ -8,27 +8,35 @@
 <div class="content-body remarged-body-h">
     <h1>Tutoriels vidéos Résonance</h1>
 
-    Afin de mieux apréhender le système wordpress, vous avez accès à nos vidéos explicatives sur l'utilisation du système wordpress et du composant "Visual Composer" permettant une mise en page sans code :
+    Afin de mieux apréhender le système wordpress, vous avez accès à nos vidéos explicatives sur l'utilisation du système wordpress et du composant "Elementor" permettant une mise en page sans code grace au systeme de glisser / déposer (drag and drop).<br />
+    <b>La catégorie Basique</b> vous explique le fonctionnement simple à savoir créer ou modifier vos articles et vos pages, insérer du texte et des images.
+    <br />
+    <b>La catégorie avancé</b> ira plus loin pour des fonctionnalités moins courantes mais qui peuvent vous être utile (Révolution Slider / Gestion d'une boutique / Gstion du menu par exemple)
+    <br />
+    <b>La catégorie Elementor</b> vous explique de manière simple la mise en page grâce au module "Elementor", vous permettant une mise en page visuelle sans coder.
 
     {% if is_granted('ROLE_USER') and CurrentUser.active == 1 %}
            
-      <h3> Basique </h3>
-      <ol>
-         {% for tutorial in tutorialsBasique %}
-          <li><a href='{{ path("show_tutoriel", {"slug": tutorial.slug}) }}'>{{ tutorial.title }}</a></li>
-         {% endfor %}
+     
+      <ol class="tutorielsReso">
+      {% set i = 0 %}
+
+        {% for tutorialCateg in ListeTutoriels %}
+         <h3> {{ tutorialCateg['categ']}} </h3>
+             {% for tutorial in tutorialCateg['tutos'] %}
+                <li><a href='{{ path("show_tutoriel", {"slug": tutorial.slug , "name": tutorialCateg['categ']}) }}'>{{ tutorial.title }}</a></li>
+              {% endfor %}
+          {% set i = i + 1 %}
+        {% endfor %}
       </ol>
 
-         <h3> Avancé </h3>
-        <ol>
-         {% for tutorial in tutorialsAdvanced %}
-          <li><a href='{{ path("show_tutoriel", {"slug": tutorial.slug}) }}'>{{ tutorial.title }}</a></li>
-         {% endfor %}
-      </ol>
-
+      <div class="hideOnRespon" style="height: 50px"></div>
       <p> Vous pouvez également <a target="_blank" href="{{ asset('files/ModedeEmploi_Wordpress.pdf') }}">télécharger notre guide au format PDF</a> pour l'utilisation de Wordpress </p>
+    {% elseif is_granted('ROLE_USER') and CurrentUser.active == false %}
+       <p> <span class="canYouConnect">Votre compte n'est pas activé, si votre compte est censé être activé, veuillez nous contacter au : 04 68 76 00 31 </span><br /><br />
+     </p>
     {% else %}
-      <p>Vous possédez un compte Tutoriel Résonance ? <a href='{{path("app_login")}}'>Connectez-vous !</a> .<br /><br />
+      <p> <span class="canYouConnect">Vous possédez un compte Tutoriel Résonance ? <a href='{{path("app_login")}}'>Connectez-vous !</a> .</span><br /><br />
        Vous ne possédez pas de compte et vous souhaitez avoir un accès aux vidéos ?<br /> Contactez nous par téléphone au : 04 68 76 00 31</p>
     {% endif %}
     

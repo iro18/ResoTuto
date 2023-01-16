@@ -13,3 +13,9 @@
 ###< symfony/web-server-bundle ###
 
 /src/DataFixtures/UserFixtures.php
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

@@ -15,19 +15,21 @@
       {{ tutorial.VideoLink|iframetuto  }}
     </div>
     <div class="nextprevtuto">
-    	{% if PrevTutorial is defined and PrevTutorial is not null %}
-	    	<div class="prevtuto">
-	    		<p>Précédent tutoriel : <a href='{{ path("show_tutoriel", {"slug": PrevTutorial.slug}) }}'>{{ PrevTutorial.title }}</a>
+    	
+	    <div class="prevtuto">
+            {% if PrevTutorial is defined and PrevTutorial is not null %}
+	    		<p>Précédent tutoriel : <a href='{{ path("show_tutoriel", {"slug": PrevTutorial.slug , "name" : CategoryTutorial}) }}'>{{ PrevTutorial.title }}</a>
 	    		</p>
-	    	</div>
-    	{% endif %}
-
-    	{% if NextTutorial is defined and NextTutorial is not null %}
+            {% endif %}
+	    </div>
+        	
     	<div class="nexttuto">
-    		<p>Prochain tutoriel : <a href='{{ path("show_tutoriel", {"slug": NextTutorial.slug}) }}'>{{ NextTutorial.title }}</a>
-    		</p>
+            {% if NextTutorial is defined and NextTutorial is not null %}
+        		<p>Prochain tutoriel : <a href='{{ path("show_tutoriel", {"slug": NextTutorial.slug , "name" : CategoryTutorial}) }}'>{{ NextTutorial.title }}</a>
+        		</p>
+            {% endif %}
 		</div>
-		{% endif %}
+		
 	</div>
 </div>
 {% endblock %}

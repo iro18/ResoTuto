@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+h1,h2,h3,h4{
+    font-family: 'Inter', sans-serif;
+}
+
 #bg {
     position: fixed;
     top: 0;
@@ -20,9 +26,9 @@
 /*** HEADER ***/
 header{
 	padding: 20px;
-	-webkit-clip-path: polygon(100% 0, 100% 18%, 30% 39%, 0 100%, 0 0);
-	clip-path: polygon(100% 0, 100% 18%, 30% 39%, 0 100%, 0 0);
-    background: #393939;
+	-webkit-clip-path: polygon(100% 0, 100% 8%, 24% 37%, 0 100%, 0 0);
+	clip-path: polygon(100% 0, 100% 8%, 24% 37%, 0 100%, 0 0);
+    background: #2e2e2f;
     min-height: 300px;
 }
 .logo-header{
@@ -46,7 +52,7 @@ header{
 
 
 /**  BODY  **/
- body{ background: #dedede; }
+ body{ background: #fff; }
 
 .login-body .btn{
     margin-top: 16px;
@@ -54,7 +60,7 @@ header{
 }
 
 .deconnexion{
-    background: #ff8e00;
+    background: #FDC52B;
         overflow: auto;
     display: inline-block;
     padding: 8px;
@@ -62,20 +68,46 @@ header{
     top: 0;
     right: 15%
 }
+.canYouConnect {
+        display: block;
+    padding: 10px;
+    border: 2px solid #2e2e2f;
+    background: #FDC52B;
+    text-align: center;
+    color: #2e2e2f;
+    margin: 50px 0
+}
+.tutorielsReso li{
+    margin: 5px 0
+}
+.tutorielsReso a{
+        font-size: 16px;
+    font-weight: 500;
+        color: #2e2e2f;
+}
 
- .content-body { margin: 1em auto; max-width: 1000px; width: 95%; font: 18px/1.5 sans-serif; }
- .content-body h1 { color: #007294; border-bottom: 6px solid #ff8e00; }
+ .content-body { margin: 1em auto; max-width: 1000px; width: 95%;font-size: 18px;font-family:  'Inter', sans-serif }
+ .content-body h1 { color: #2e2e2f; border-bottom: 3px solid #FDC52B; }
  @media all and (max-width: 1366px){  .content-body{ max-width: 900px } }
 
- .remarged-body-h{ margin-top: -100px }
+ .remarged-body-h{ margin-top: -150px }
 
- .disclaimer{ margin:0 auto;max-width: 1000px; width: 95%;padding: 10px; border: 2px solid #007294; background: rgba(255, 142, 0, 0.2); text-align: center; margin-top: 32px}
- .disclaimer p{font-family: 'Open Sans';}
+ .disclaimer{ margin: 32px auto;
+    max-width: 1000px;
+    width: 95%;
+    padding: 10px;
+    border: 2px solid #2e2e2f;
+    background: #FDC52B;
+    text-align: center;
+    color: #2e2e2f;
+    margin-top: 32px;
+    font-weight: 600;}
+ .disclaimer p{font-family: 'Inter', sans-serif;}
 
 /** FOOTER **/
-footer{ padding: 20px ; background: #ff8e00;}
+footer{ padding: 20px ; background: #FDC52B;}
 .footer-wrap{text-align: center;}
-.footer-wrap p { font: 18px/1.5 sans-serif; color: #007294 ; margin : 0 ; }
+.footer-wrap p { font: 18px/1.5 sans-serif; color: #2d2d2e ; margin : 0 ; }
 
 
 /** PAGE TUTORIELS **/
@@ -85,7 +117,7 @@ footer{ padding: 20px ; background: #ff8e00;}
 .retourbtn{
     position: fixed;
     left: 0;
-    background: #ff8e00;
+    background: #FDC52B;
     padding: 16px 18px;
     height: 32px;
 }

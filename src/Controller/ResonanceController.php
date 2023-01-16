@@ -10,6 +10,7 @@ use App\Entity\Category;
 // use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
 use App\Repository\TutorialRepository;
+use App\Repository\CategoryRepository;
 
 class ResonanceController extends AbstractController
 {
@@ -27,35 +28,49 @@ class ResonanceController extends AbstractController
 
         $CurrentUser = $security->getUser();
     	$em  = $this->getDoctrine();
-        $repo = $em->getRepository(Tutorial::class);
+        $repoTuto = $em->getRepository(Tutorial::class);
     	$repoCateg = $em->getRepository(Category::class);
-        $IdBasique = $repoCateg->findOneBy(["Name" => "Basique"]);
+        $AllCateg = $repoCateg->findAll();
+        $ArrayCateg =  array();
+        $ListeTutoriels = array() ;
+        $i = 0 ;
+        foreach ($AllCateg as $key => $value) {
+           $ListeTutoriels[$i]['tutos'] = $repoTuto->findBy(["isPublish" => true, "category" => $value->getId()], ['order_menu' => 'ASC']);
+           $ListeTutoriels[$i]['categ'] = $value->getName();
+           $i++;
+        }
+
+        /*$IdBasique = $repoCateg->findOneBy(["Name" => "Basique"]);
         $IdAdvanced = $repoCateg->findOneBy(["Name" => "Avancé"]);
         $tutorialsBasique = $repo->findBy(["isPublish" => true, "category" => $IdBasique], ['order_menu' => 'ASC']);
-    	$tutorialsAdvanced = $repo->findBy(["isPublish" => true, "category" => $IdAdvanced], ['order_menu' => 'ASC']);
+    	$tutorialsAdvanced = $repo->findBy(["isPublish" => true, "category" => $IdAdvanced], ['order_menu' => 'ASC']);*/
 
-        return $this->render('resonance/index.html.twig', compact('tutorialsBasique','tutorialsAdvanced','CurrentUser'));
+        //return $this->render('resonance/index.html.twig', compact('tutorialsBasique','tutorialsAdvanced','CurrentUser'));
+
+        return $this->render('resonance/index.html.twig', compact('ListeTutoriels','CurrentUser'));
     }
 
     /**
-     * @Route("tutoriel/{slug}", name="show_tutoriel")
+     * @Route("tutoriel/{name}/{slug}", name="show_tutoriel")
      */
-    public function showTutorial($slug, TutorialRepository $TutoRepo)
+    public function showTutorial( $name, $slug, TutorialRepository $TutoRepo)
     {
 
          $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-         
     	$tutorial = $TutoRepo->findOneBySlug($slug);
 
         $ActualOrder = $tutorial->getOrderMenu();
-        $NextTutorial = $TutoRepo->findOneNextTuto($ActualOrder);
-        $PrevTutorial = $TutoRepo->findOnePrevTuto($ActualOrder);
+        $CategoryTutorial = $tutorial->getCategory();
+
+        $NextTutorial = $TutoRepo->findOneNextTuto($ActualOrder,$CategoryTutorial);
+        $PrevTutorial = $TutoRepo->findOnePrevTuto($ActualOrder,$CategoryTutorial);
+
 
     	if(!$tutorial){
     		throw $this->createNotFoundException('Page inexistante ');
     	}
-    	return $this->render('resonance/show.html.twig',compact('tutorial','NextTutorial','PrevTutorial'));
+    	return $this->render('resonance/show.html.twig',compact('tutorial','NextTutorial','PrevTutorial','CategoryTutorial'));
     }
 
 

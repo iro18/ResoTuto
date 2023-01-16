@@ -9,11 +9,11 @@ Actually Fonctionnal :
 - Create Users accounts
 - Listing of tutorials
 - Limited access for anonymous
-- Previous / Next tutorials
+- Previous / Next tutorials (Updated with current Category)
 
 Here is the TODO (Main): 
 - ~~Add Twig Filter "video" to convert youtube link in to iframe.~~ (Possibly complexify Regex)
-- Add categories on tutorial (Wordpress / Prestashop ~~then Basic / Advanced~~)
+- ~~Add categories on tutorial (Wordpress / Prestashop ~~then Basic / Advanced~~)~~
 - Add client account and theire own backoffice (don't know what to put inside)
 - Add Password Lost on Login Page
 - Create basics Videos
@@ -26,7 +26,7 @@ Others features (Secondary)
 - Add the possiblity to "complete" a tutorial (use ReactJs)
 - ~~Go to Next / Previous Project (View)~~
 - ~~Add Order on Tutorials + OrderBy Query on Home~~
-- ~~Add CkEditor on Content~~
+- ~~Add CkEditor on Content~~ (Redo after 5.4 symfony Update)
 - Add "Search Tutorial"
 
 Style Todo (Tertiary)

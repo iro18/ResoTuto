@@ -15,12 +15,12 @@
     <header>
     	<div class="logo-header">
     		<a href="{{ path('home') }}">
-    			<img title="Logo Résonance Communication" src='{{ asset('images/logo-resonance-2018.png') }}' / >
+    			<img title="Logo Résonance Communication" style='width:150px' src='{{ asset('images/logo-resonance-communication-B.svg') }}' / >
             </a>
     	</div>
         {% if is_granted('ROLE_ADMIN') %} 
             <div class="dashlink">
-                <a href="{{ path('easyadmin') }}"> Administration
+                <a href="{{ path('app_dashboard_index') }}"> Administration
                     <i class="fa fa-tachometer-alt"></i>
                 </a>
             </div>
@@ -38,7 +38,7 @@
     </body>
     <footer>
     	<div class='footer-wrap'>
-    		<p>&copy; 2019 - Création <a target="_blank" href='http://www.resonancecommunication.com'>Résonance Communication</a><p>
+    		<p>&copy; 2023 - Création <a target="_blank" href='https://www.resonancecommunication.com'>Résonance Communication</a><p>
     	</div>
     </footer>
 </html>
